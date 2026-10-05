@@ -1,17 +1,19 @@
 {
     "name": "dept-of-scrapyard-robotics/spectra6",
-    "description": "ScrapyardIO Framework extension library that enables SPI Control of Spectra6 ePaper Displays on Linux",
+    "description": "Drive E Ink Spectra 6 (black, white, yellow, red, blue, green) ePaper panels over SPI with the ScrapyardIO GPIO framework.",
     "type": "library",
-    "version": "0.1.0",
+    "version": "0.10.0",
     "keywords": [
-        "laravel",
-        "io",
-        "linux",
-        "embedded",
+        "spectra6",
+        "e6",
+        "epaper",
+        "e-ink",
+        "display",
         "spi",
-        "spectra6"
+        "scrapyard-io"
     ],
     "license": "MIT",
+    "homepage": "https://dosr.projectsaturnstudios.com",
     "authors": [
         {
             "name": "Project Saturn Studios, LLC",
@@ -19,26 +21,51 @@
         }
     ],
     "require": {
-        "php": "^8.3",
-
-        "dept-of-scrapyard-robotics/scrapyard-io-framework": "^0.1.0"
+        "php": "^8.4|^8.5|^8.6",
+        "gpio/contracts": "^0.10.0",
+        "gpio/integrated-circuits": "^0.10.0",
+        "venusian-surface/contracts": "^0.10.0",
+        "venusian-voyager/nuts-and-bolts": "^0.10.0",
+        "venusian-voyager/vessel": "^0.10.0"
     },
     "require-dev": {
-        "mockery/mockery": "^1.6",
-        "orchestra/testbench": "*",
-        "pestphp/pest": "^4.0",
-        "pestphp/pest-plugin-laravel": "^4.0",
-        "phpunit/phpunit": "^12.0"
+        "gpio/digital": "^0.10.0",
+        "gpio/spi": "^0.10.0",
+        "pestphp/pest": "^4",
+        "venusian-voyager/config": "^0.10.0"
+    },
+    "suggest": {
+        "gpio/digital": "^0.10.0 - DC, RST, BUSY and PWR pins for Spectra6SPITransport",
+        "gpio/spi": "^0.10.0 - SPI connections for Spectra6SPITransport",
+        "microscrap/scrapyard-linux": "^0.10.0 - native spidev and libgpiod drivers",
+        "microscrap/scrapyard-usb": "^0.10.0 - MPSSE SPI and pins over FTDI"
     },
     "autoload": {
         "psr-4": {
-            "ScrapyardIO\\Displays\\ePaper\\Spectra6\\": "src"
+            "DeptOfScrapyardRobotics\\Displays\\Spectra6\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Tests\\": "tests"
+            "DeptOfScrapyardRobotics\\Displays\\Spectra6\\Tests\\": "tests/"
         }
     },
-    "minimum-stability": "stable"
+    "extra": {
+        "branch-alias": {
+            "dev-main": "0.10.x-dev"
+        },
+        "venusian": {
+            "providers": [
+                "DeptOfScrapyardRobotics\\Displays\\Spectra6\\Providers\\Spectra6ServiceProvider"
+            ]
+        }
+    },
+    "config": {
+        "sort-packages": true,
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
 }
